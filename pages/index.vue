@@ -1,5 +1,5 @@
 <template>
-  <h1>Hello world bitA!!!</h1>
+  <h1>{{ response.details.subject }}</h1>
 </template>
 
 <script lang="ts">
@@ -11,9 +11,9 @@ export default Vue.extend({
     try {
       console.log('index page')
       console.log('BASE_URL: ',process.env.BASE_URL)
-      const response = await $axios.$get(process.env.BASE_URL + `/rcms-api/8/form/3`)
+      const response = await $axios.$get(process.env.BASE_URL + `/rcms-api/5/service/3`)
       console.log(response)
-      // return { response }
+      return { response }
     }catch (e) {
       // console.log(e.message)
     }
