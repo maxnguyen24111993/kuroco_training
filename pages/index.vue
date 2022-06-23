@@ -7,15 +7,12 @@ import Vue from 'vue'
 
 export default Vue.extend({
   name: 'IndexPage',
-  async asyncData ({ $axios }) {
+  async asyncData ({ $axios, $config: { baseURL } }) {
     try {
-      console.log('index page')
-      console.log('BASE_URL: ',process.env.BASE_URL)
-      const response = await $axios.$get(process.env.BASE_URL + `/rcms-api/5/service/3`)
-      console.log(response)
+      const response = await $axios.$get(baseURL + `/rcms-api/5/service/3`)
       return { response }
     }catch (e) {
-      // console.log(e.message)
+      console.log(e)
     }
   }
 })
