@@ -1,19 +1,13 @@
 <template>
-  <h1>{{ response.details.subject }}</h1>
+  <HomePage />
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import HomePage from "~/pages/home/index.vue"
 
 export default Vue.extend({
   name: 'IndexPage',
-  async asyncData ({ $axios, $config: { baseURL } }) {
-    try {
-      const response = await $axios.$get(baseURL + `/rcms-api/5/service/3`)
-      return { response }
-    }catch (e) {
-      console.log(e)
-    }
-  }
+  components: { HomePage }
 })
 </script>
