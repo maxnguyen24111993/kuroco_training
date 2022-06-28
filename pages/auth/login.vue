@@ -12,6 +12,9 @@
     <div class="form__button">
       <button class="form__buttonSubmit" @click="onLogin">Login</button>
     </div>
+    <div class="form__link">
+      <nuxt-link to="/auth/register">You don't have account?</nuxt-link>
+    </div>
   </div>
 </template>
 
@@ -28,17 +31,11 @@ export default Vue.extend({
   },
   methods: {
     async onLogin () {
-      try {
-        const objData = {
-          email: this.email,
-          password: this.password
-        }
-        // const response = await this.$axios.$post(process.env.BASE_URL + '/rcms-api/7/login', objData)
-        const response = await this.$axios.$get(process.env.BASE_URL + '/rcms-api/5/service')
-        console.log(response)
-      } catch (e) {
-        console.log(e)
+      const payload = {
+        email: this.email,
+        password: this.password
       }
+      await this.$store.dispatch('login', payload)
     }
   }
 })
@@ -94,5 +91,10 @@ export default Vue.extend({
   border-radius: 5px;
   padding: 8px 30px;
   cursor: pointer;
+}
+
+.form__link {
+  text-align: center;
+  margin: 20px 0;
 }
 </style>

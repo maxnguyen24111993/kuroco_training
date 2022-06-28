@@ -28,6 +28,9 @@
     <div class="form__button">
       <button class="form__buttonSubmit" @click="onRegister">Register</button>
     </div>
+    <div class="form__link">
+      <nuxt-link to="/auth/login">Please login.</nuxt-link>
+    </div>
   </div>
 </template>
 
@@ -49,7 +52,7 @@ export default Vue.extend({
   methods: {
     async onRegister () {
       try {
-        const objData = {
+        const payload = {
           name1: this.firstName,
           name2: this.lastName,
           email: this.email,
@@ -57,8 +60,7 @@ export default Vue.extend({
           tel: this.phone,
           address1: this.address
         }
-        const response = await this.$axios.$post(process.env.BASE_URL + '/rcms-api/7/member/regist', objData)
-        console.log(response)
+        await this.$store.dispatch('register', payload)
       } catch (e) {
         console.log(e)
       }
@@ -117,5 +119,10 @@ export default Vue.extend({
     border-radius: 5px;
     padding: 8px 30px;
     cursor: pointer;
+  }
+
+  .form__link {
+    text-align: center;
+    margin: 20px 0;
   }
 </style>
