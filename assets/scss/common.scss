@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.form {
+  width: 800px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  margin: 20px auto;
+  padding: 15px;
+}
+
+.form__title {
+  font-size: 22px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.form__row {
+  font-size: 0;
+  padding: 10px;
+}
+
+.form__require {
+  color: #780505;
+}
+
+.form__label {
+  display: inline-block;
+  width: 25%;
+  font-size: 16px;
+  vertical-align: top;
+}
+
+.form__detail {
+  display: inline-block;
+  width: 75%;
+  font-size: 0;
+}
+
+.form__col-2 {
+  width: 49%;
+  display: inline-block;
+}
+
+.form__firstname {
+  margin-right: 2%;
+}
+
+.form__text {
+  display: inline-block;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.form__input {
+  width: 100%;
+  font-size: 14px;
+  padding: 6px 10px;
+}
+
+.form__btnTerm {
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 6px 12px;
+  font-size: 15px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.form_termInput {
+  margin-right: 4px;
+}
+
+.form__button {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.form__buttonSubmit {
+  background-color: #000000;
+  border: 1px solid #000000;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 6px 30px;
+  cursor: pointer;
+
+  &--disabled {
+    cursor: revert;
+    opacity: 0.5;
+  }
+}
+
+.form__link {
+  text-align: center;
+  margin: 20px 0;
+}

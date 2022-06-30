@@ -1,7 +1,8 @@
 import { GetterTree, ActionTree, MutationTree } from 'vuex'
 
 export const state = () => ({
-  isHiddenInput: false
+  isHiddenInput: false,
+  objRegister: null
 })
 
 export type RootState = ReturnType<typeof state>
@@ -16,14 +17,16 @@ export const getters: GetterTree<RootState, RootState> = {
   },
   getAuthenticated: () => {
     if (process.client) return JSON.parse(localStorage.getItem('AUTHENTICATED') || 'false')
-  }
+  },
+  getProfileRegister: state => state.objRegister
 }
 
 export const mutations: MutationTree<RootState> = {
   setToken: (state, token) => localStorage.setItem('ACCESS_TOKEN', token),
   setMemberId: (state, memberId) => localStorage.setItem('MEMBER_ID', memberId),
   setAuthenticated: (state, authenticated) => localStorage.setItem('AUTHENTICATED', authenticated),
-  setIsHiddenInput: (state, isHidden ) => state.isHiddenInput = !isHidden
+  setIsHiddenInput: (state, isHidden ) => state.isHiddenInput = !isHidden,
+  setProfileRegister: (state, objRegister) => state.objRegister = objRegister
 }
 
 export const actions: ActionTree<RootState, RootState> = {
@@ -62,7 +65,7 @@ export const actions: ActionTree<RootState, RootState> = {
     await this.$axios.post(process.env.BASE_URL + '/rcms-api/7/member/register', payload)
       .then(response => {
         console.log(response)
-        this.$router.push('/auth/login')
+        this.$router.push('/auth/register_thanks')
       }).catch(e => {
         console.log(e.response)
       })
