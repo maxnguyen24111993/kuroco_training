@@ -2,34 +2,53 @@
   <div class="form">
     <h1 class="form__title">Register</h1>
     <div class="form__row">
-      <span class="form__label">First name:</span>
-      <input type="text" v-model="firstName" class="form__input">
+      <span class="form__label">Full name<i class="form__require">*</i></span>
+      <div class="form__detail">
+        <div class="form__col-2 form__firstname">
+          <span class="form__text">First name</span>
+          <input type="text" v-model="firstName" class="form__input" placeholder="First name">
+        </div>
+        <div class="form__col-2">
+          <span class="form__text">Last name</span>
+          <input type="text" v-model="lastName" class="form__input" placeholder="Last name">
+        </div>
+      </div>
     </div>
     <div class="form__row">
-      <span class="form__label">Last name:</span>
-      <input type="text" v-model="lastName" class="form__input">
+      <span class="form__label">Company name<i class="form__require">*</i></span>
+      <div class="form__detail">
+        <input type="text" v-model="companyName" class="form__input" placeholder="Company name">
+      </div>
     </div>
     <div class="form__row">
-      <span class="form__label">Email:</span>
-      <input type="email" v-model="email" class="form__input">
+      <span class="form__label">Email<i class="form__require">*</i></span>
+      <div class="form__detail">
+        <input type="email" v-model="email" class="form__input" placeholder="Email">
+      </div>
     </div>
     <div class="form__row">
-      <span class="form__label">Password:</span>
-      <input type="password" v-model="password" class="form__input">
-    </div>
-    <div class="form__row">
-      <span class="form__label">Phone number:</span>
-      <input type="text" v-model="phone" class="form__input">
-    </div>
-    <div class="form__row">
-      <span class="form__label">Address:</span>
-      <input type="text" v-model="address" class="form__input">
+      <span class="form__label">Terms & Conditions<i class="form__require">*</i></span>
+      <div class="form__detail">
+        <a
+          class="form__btnTerm"
+          href="https://kuroco.app/files/legal/Kuroco-terms-of-service-en.pdf"
+          target="_blank"
+        >
+          Terms & Conditions
+        </a>
+        <div class="form__term">
+          <input class="form_termInput" type="checkbox" v-model="isDisabled">
+          <label class="form__text">Accept Terms & Conditions</label>
+        </div>
+      </div>
     </div>
     <div class="form__button">
-      <button class="form__buttonSubmit" @click="onRegister">Register</button>
-    </div>
-    <div class="form__link">
-      <nuxt-link to="/auth/login">Please login.</nuxt-link>
+      <button
+        class="form__buttonSubmit"
+        :class="{'form__buttonSubmit--disabled': !isDisabled}"
+        :disabled="!isDisabled" @click="onRegister">
+        Register
+      </button>
     </div>
   </div>
 </template>
@@ -44,85 +63,32 @@ export default Vue.extend({
       firstName: '',
       lastName: '',
       email: '',
-      password: '',
-      phone: '',
-      address: ''
+      companyName: '',
+      isDisabled: false
     }
   },
   methods: {
     async onRegister () {
-      try {
-        const payload = {
-          name1: this.firstName,
-          name2: this.lastName,
-          email: this.email,
-          login_pwd: this.password,
-          tel: this.phone,
-          address1: this.address
-        }
-        await this.$store.dispatch('register', payload)
-      } catch (e) {
-        console.log(e)
+      const payload = {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        companyName: this.companyName,
+        isDisabled: this.isDisabled
       }
+      await this.$store.commit('setProfileRegister', payload)
+      await this.$router.push('/auth/register_confirm')
+    }
+  },
+  mounted() {
+    if (this.$store.getters.getProfileRegister) {
+      const { firstName, lastName, email, companyName, isDisabled } = this.$store.getters.getProfileRegister
+      this.firstName = firstName
+      this.lastName = lastName
+      this.email = email
+      this.companyName = companyName
+      this.isDisabled = isDisabled
     }
   }
 })
 </script>
-
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  .form {
-    width: 800px;
-    border: 1px solid #000000;
-    border-radius: 5px;
-    margin: 20px auto;
-    padding: 15px;
-  }
-
-  .form__title {
-    font-size: 22px;
-    text-align: center;
-    margin: 20px 0;
-  }
-
-  .form__row {
-    font-size: 0;
-    padding: 10px;
-  }
-
-  .form__label {
-    display: inline-block;
-    width: 25%;
-    font-size: 16px;
-  }
-
-  .form__input {
-    display: inline-block;
-    width: 75%;
-    font-size: 16px;
-    padding: 6px 10px;
-  }
-
-  .form__button {
-    text-align: center;
-    margin: 20px 0;
-  }
-
-  .form__buttonSubmit {
-    background-color: #ffffff;
-    border: 1px solid #000000;
-    border-radius: 5px;
-    padding: 8px 30px;
-    cursor: pointer;
-  }
-
-  .form__link {
-    text-align: center;
-    margin: 20px 0;
-  }
-</style>

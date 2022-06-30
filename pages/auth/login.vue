@@ -3,11 +3,15 @@
     <h1 class="form__title">Login</h1>
     <div class="form__row">
       <span class="form__label">Email:</span>
-      <input type="email" v-model="email" class="form__input">
+      <div class="form__detail">
+        <input type="email" v-model="email" class="form__input">
+      </div>
     </div>
     <div class="form__row">
       <span class="form__label">Password:</span>
-      <input type="password" v-model="password" class="form__input">
+      <div class="form__detail">
+        <input type="password" v-model="password" class="form__input">
+      </div>
     </div>
     <div class="form__button">
       <button class="form__buttonSubmit" @click="onLogin">Login</button>
@@ -40,61 +44,3 @@ export default Vue.extend({
   }
 })
 </script>
-
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.form {
-  width: 800px;
-  border: 1px solid #000000;
-  border-radius: 5px;
-  margin: 20px auto;
-  padding: 15px;
-}
-
-.form__title {
-  font-size: 22px;
-  text-align: center;
-  margin: 20px 0;
-}
-
-.form__row {
-  font-size: 0;
-  padding: 10px;
-}
-
-.form__label {
-  display: inline-block;
-  width: 25%;
-  font-size: 16px;
-}
-
-.form__input {
-  display: inline-block;
-  width: 75%;
-  font-size: 16px;
-  padding: 6px 10px;
-}
-
-.form__button {
-  text-align: center;
-  margin: 20px 0;
-}
-
-.form__buttonSubmit {
-  background-color: #ffffff;
-  border: 1px solid #000000;
-  border-radius: 5px;
-  padding: 8px 30px;
-  cursor: pointer;
-}
-
-.form__link {
-  text-align: center;
-  margin: 20px 0;
-}
-</style>
