@@ -6,7 +6,6 @@ on:
   issue_comment:
     types: [created, edited]
   workflow_dispatch:
-    branches: [ master ]
 env:
   BASE_URL: ${{secrets.BASE_URL}}
 jobs:
