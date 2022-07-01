@@ -60,7 +60,6 @@ export default {
   },
 
   privateRuntimeConfig: {
-    // baseURL: process.env.BASE_URL,
     apiSecret: process.env.API_SECRET
   },
 
@@ -69,6 +68,6 @@ export default {
   },
 
   env: {
-    BASE_URL: process.env.BASE_URL || 'http://localhost:3000'
+    BASE_URL: process.env.BASE_URL || 'https://dev-bita.g.kuroco.app'
   }
 }
