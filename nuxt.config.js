@@ -71,6 +71,6 @@ export default {
   },
 
   env: {
-    BASE_URL: process.env.BASE_URL || 'https://dev-bita.g.kuroco.app'
+    BASE_URL: process.env.BASE_URL || 'http://localhost:3000'
   }
 }
