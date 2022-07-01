@@ -35,9 +35,7 @@ export default Vue.extend({
   },
   mounted() {
     this.isShow = this.$store.getters.getAuthenticated
-    this.$axios.$get(process.env.BASE_URL + '/rcms-api/11/blog', {
-      headers: 'Access-Control-Allow-Origin'
-    })
+    this.$axios.$get(process.env.BASE_URL + '/rcms-api/11/blog')
       .then(response => {
         console.log(response)
         this.response = response.list
