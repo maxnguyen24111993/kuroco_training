@@ -22,10 +22,6 @@ export default {
     '~/assets/scss/common.scss'
   ],
 
-  env: {
-    BASE_URL: process.env.BASE_URL || 'http://localhost:3000'
-  },
-
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
 
@@ -67,5 +63,9 @@ export default {
   privateRuntimeConfig: {
     baseURL: process.env.BASE_URL,
     apiSecret: process.env.API_SECRET
+  },
+
+  env: {
+    BASE_URL: process.env.BASE_URL || 'http://localhost:3000'
   }
 }
