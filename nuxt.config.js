@@ -22,6 +22,10 @@ export default {
     '~/assets/scss/common.scss'
   ],
 
+  env: {
+    BASE_URL: process.env.BASE_URL || 'http://localhost:3000'
+  },
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
 
@@ -31,15 +35,15 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/typescript
-    '@nuxt/typescript-build',
-    '@nuxtjs/dotenv'
+    '@nuxt/typescript-build'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    '@nuxtjs/dotenv'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -63,9 +67,5 @@ export default {
   privateRuntimeConfig: {
     baseURL: process.env.BASE_URL,
     apiSecret: process.env.API_SECRET
-  },
-
-  env: {
-    BASE_URL: process.env.BASE_URL || 'https://dev-bita.g.kuroco.app'
   }
 }
