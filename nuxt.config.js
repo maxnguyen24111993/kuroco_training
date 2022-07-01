@@ -66,6 +66,6 @@ export default {
   },
 
   env: {
-    BASE_URL: process.env.BASE_URL || 'http://localhost:3000'
+    BASE_URL: this.baseURL || 'http://localhost:3000'
   }
 }
