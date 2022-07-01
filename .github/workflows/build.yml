@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     branches: [ master ]
 env:
-  BASE_URL: "https://dev-bita.g.kuroco.app"
+  BASE_URL: ${{secrets.BASE_URL}}
 jobs:
   # for Pull Request (exclude merged)
   pullreq_build:
