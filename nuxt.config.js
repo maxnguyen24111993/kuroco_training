@@ -45,7 +45,7 @@ export default {
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     proxy: true,
-    BASE_URL: process.env.BASE_URL,
+    baseURL: process.env.BASE_URL,
     credentials: true,
     withCredentials: true
   },
@@ -60,12 +60,12 @@ export default {
   },
 
   privateRuntimeConfig: {
-    // BASE_URL: process.env.BASE_URL,
-    API_SECRET: process.env.API_SECRET
+    // baseURL: process.env.BASE_URL,
+    apiSecret: process.env.API_SECRET
   },
 
   publicRuntimeConfig: {
-    BASE_URL: process.env.BASE_URL,
+    baseURL: process.env.BASE_URL || 'http://localhost:3000',
   },
 
   env: {
