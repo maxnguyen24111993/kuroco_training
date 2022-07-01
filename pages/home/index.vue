@@ -34,8 +34,8 @@ export default Vue.extend({
     }
   },
   mounted() {
-    console.log(process.env)
-    console.log(this.$config.BASE_URL)
+    console.log(process.env.BASE_URL)
+    console.log(this.$config.baseURL)
     this.isShow = this.$store.getters.getAuthenticated
     this.$axios.$get(process.env.BASE_URL + '/rcms-api/11/blog')
       .then(response => {
