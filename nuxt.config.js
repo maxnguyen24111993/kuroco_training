@@ -38,8 +38,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/style-resources',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/style-resources'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -61,8 +60,12 @@ export default {
   },
 
   privateRuntimeConfig: {
-    BASE_URL: process.env.BASE_URL,
+    // BASE_URL: process.env.BASE_URL,
     API_SECRET: process.env.API_SECRET
+  },
+
+  publicRuntimeConfig: {
+    BASE_URL: process.env.BASE_URL,
   },
 
   env: {
