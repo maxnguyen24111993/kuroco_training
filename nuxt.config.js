@@ -1,7 +1,7 @@
 const env = require('dotenv');
 env.config();
 
-export default {
+module.exports = {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
