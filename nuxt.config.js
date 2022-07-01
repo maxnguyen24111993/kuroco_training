@@ -60,11 +60,12 @@ export default {
   },
 
   privateRuntimeConfig: {
-    apiSecret: process.env.API_SECRET
+    // apiSecret: process.env.API_SECRET
   },
 
   publicRuntimeConfig: {
-    baseURL: process.env.BASE_URL || 'http://localhost:3000',
+    baseURL: '${BASE_URL}' || 'http://localhost:3000',
+    apiSecret: process.env.API_SECRET || '1111'
   },
 
   env: {
