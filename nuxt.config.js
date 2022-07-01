@@ -38,7 +38,9 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    '@nuxtjs/dotenv',
+    ['@nuxtjs/dotenv', { filename: '.env' }]
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -64,7 +66,7 @@ export default {
   },
 
   publicRuntimeConfig: {
-    baseURL: `${process.env.BASE_URL}` || 'http://localhost:3000',
+    baseURL: process.env.BASE_URL || 'http://localhost:3000',
     apiSecret: process.env.API_SECRET || '1111'
   },
 
