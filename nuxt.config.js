@@ -1,9 +1,11 @@
-const env = require('dotenv');
-env.config();
+const environment = process.env.NODE_ENV; // <- (*1)
+const envSettings = require(`./env.${environment}.js`);
 
-module.exports = {
+export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
+
+  env: envSettings,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -34,16 +36,14 @@ module.exports = {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/typescript
-    '@nuxt/typescript-build',
-    '@nuxtjs/dotenv'
+    '@nuxt/typescript-build'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/style-resources',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/style-resources'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -74,7 +74,7 @@ module.exports = {
     baseOrigin: process.env.BASE_ORIGIN
   },
 
-  env: {
-    BASE_URL: process.env.BASE_URL || 'https://dev-bita.g.kuroco.app'
-  }
+  // env: {
+  //   BASE_URL: process.env.BASE_URL || 'https://dev-bita.g.kuroco.app'
+  // }
 }
