@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <h1 class="home__title">Home Page</h1>
-    <p>{{ $config.baseURL}} - {{ $config.apiSecret}} - {{ $config.baseOrigin}}</p>
     <div class="home__content">
       <div class="home__detail" v-for="list in response">
         <h1 class="home__detail-title">{{ list.ext_1 }}</h1>
