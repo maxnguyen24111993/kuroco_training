@@ -64,11 +64,11 @@ export default {
   },
 
   publicRuntimeConfig: {
-    baseURL: '${BASE_URL}' || 'http://localhost:3000',
+    baseURL: `${process.env.BASE_URL}` || 'http://localhost:3000',
     apiSecret: process.env.API_SECRET || '1111'
   },
 
   env: {
-    BASE_URL: process.env.BASE_URL || 'http://localhost:3000'
+    BASE_URL: process.env.BASE_URL || 'https://dev-bita.g.kuroco.app'
   }
 }
