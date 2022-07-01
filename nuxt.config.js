@@ -1,4 +1,5 @@
-require('dotenv').config();
+const env = require('dotenv');
+env.config();
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
