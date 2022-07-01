@@ -38,9 +38,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/style-resources',
-    '@nuxtjs/dotenv',
-    ['@nuxtjs/dotenv', { filename: '.env' }]
+    '@nuxtjs/style-resources'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -67,10 +65,11 @@ export default {
 
   publicRuntimeConfig: {
     baseURL: process.env.BASE_URL || 'http://localhost:3000',
-    apiSecret: process.env.API_SECRET || '1111'
+    apiSecret: process.env.API_SECRET || '1111',
+    baseOrigin: process.env.BASE_ORIGIN
   },
 
   env: {
-    BASE_URL: process.env.BASE_URL || 'http://localhost:3000'
+    BASE_URL: process.env.BASE_URL || 'https://dev-bita.g.kuroco.app'
   }
 }

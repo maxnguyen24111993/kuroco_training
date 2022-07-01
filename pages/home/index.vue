@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <h1 class="home__title">Home Page</h1>
+    <p>{{ $config.baseURL}} - {{ $config.apiSecret}} - {{ $config.baseOrigin}}</p>
     <div class="home__content">
       <div class="home__detail" v-for="list in response">
         <h1 class="home__detail-title">{{ list.ext_1 }}</h1>
@@ -36,7 +37,7 @@ export default Vue.extend({
   mounted() {
     console.log('baseURL: ',this.$config.baseURL)
     console.log('apiSecret: ',this.$config.apiSecret)
-    console.log('BASE_URL: ',process.env.BASE_URL)
+    console.log('baseOrigin: ',this.$config.baseOrigin)
     this.isShow = this.$store.getters.getAuthenticated
     this.$axios.$get(process.env.BASE_URL + '/rcms-api/11/blog')
       .then(response => {
