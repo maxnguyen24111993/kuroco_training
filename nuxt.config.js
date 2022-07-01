@@ -1,15 +1,10 @@
-const environment = process.env.NODE_ENV; // <- (*1)
-const envSettings = require(`./env.${environment}.js`);
-
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
-  env: envSettings,
-
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: envSettings.TITLE,
+    title: 'Kuroco Page',
     htmlAttrs: {
       lang: 'en',
     },
@@ -74,7 +69,7 @@ export default {
     baseOrigin: process.env.BASE_ORIGIN
   },
 
-  // env: {
-  //   BASE_URL: process.env.BASE_URL || 'https://dev-bita.g.kuroco.app'
-  // }
+  env: {
+    BASE_URL: process.env.BASE_URL || 'https://dev-bita.g.kuroco.app'
+  }
 }
