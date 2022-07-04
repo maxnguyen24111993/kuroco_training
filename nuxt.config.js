@@ -68,7 +68,7 @@ export default {
   },
 
   env: {
-    BASE_URL: process.env.BASE_URL || 'https://dev-bita.g.kuroco.app',
-    NUXT_ENV_BASE_URL: process.env.NUXT_ENV_BASE_URL
+    BASE_URL: process.env.BASE_URL || 'http://localhost:3000',
+    NUXT_ENV_BASE_URL: process.env.NUXT_ENV_BASE_URL || 'http://localhost:3000'
   }
 }
