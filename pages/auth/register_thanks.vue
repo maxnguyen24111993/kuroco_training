@@ -1,8 +1,8 @@
 <template>
   <div class="form">
-    <h1 class="form__title">Your membership registration has been completed.<br>Thank you very much.</h1>
+    <h1 class="form__title">ご登録ありがとうございました。</h1>
     <div class="form__button">
-      <button class="form__buttonSubmit" @click="onTopPage">Top page</button>
+      <button class="form__buttonSubmit" @click="onTopPage">トップへ戻る</button>
     </div>
   </div>
 </template>

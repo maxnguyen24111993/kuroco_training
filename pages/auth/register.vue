@@ -1,44 +1,44 @@
 <template>
   <div class="form">
-    <h1 class="form__title">Register</h1>
+    <h1 class="form__title">会員登録</h1>
     <div class="form__row">
-      <span class="form__label">Full name<i class="form__require">*</i></span>
+      <span class="form__label">お名前<i class="form__require">*</i></span>
       <div class="form__detail">
         <div class="form__col-2 form__firstname">
-          <span class="form__text">First name</span>
-          <input type="text" v-model="firstName" class="form__input" placeholder="First name">
+          <span class="form__text">姓</span>
+          <input type="text" v-model="firstName" class="form__input" placeholder="姓">
         </div>
         <div class="form__col-2">
-          <span class="form__text">Last name</span>
-          <input type="text" v-model="lastName" class="form__input" placeholder="Last name">
+          <span class="form__text">名</span>
+          <input type="text" v-model="lastName" class="form__input" placeholder="名">
         </div>
       </div>
     </div>
     <div class="form__row">
-      <span class="form__label">Company name<i class="form__require">*</i></span>
+      <span class="form__label">勤務先・所属団体<i class="form__require">*</i></span>
       <div class="form__detail">
-        <input type="text" v-model="companyName" class="form__input" placeholder="Company name">
+        <input type="text" v-model="companyName" class="form__input" placeholder="勤務先・所属団体">
       </div>
     </div>
     <div class="form__row">
-      <span class="form__label">Email<i class="form__require">*</i></span>
+      <span class="form__label">メールアドレス<i class="form__require">*</i></span>
       <div class="form__detail">
-        <input type="email" v-model="email" class="form__input" placeholder="Email">
+        <input type="email" v-model="email" class="form__input" placeholder="メールアドレス">
       </div>
     </div>
     <div class="form__row">
-      <span class="form__label">Terms & Conditions<i class="form__require">*</i></span>
+      <span class="form__label">利用規約の同意<i class="form__require">*</i></span>
       <div class="form__detail">
         <a
           class="form__btnTerm"
           href="https://kuroco.app/files/legal/Kuroco-terms-of-service-en.pdf"
           target="_blank"
         >
-          Terms & Conditions
+          利用規約を見る
         </a>
         <div class="form__term">
           <input class="form_termInput" type="checkbox" v-model="isDisabled">
-          <label class="form__text">Accept Terms & Conditions</label>
+          <label class="form__text">利用規約に同意する</label>
         </div>
       </div>
     </div>
@@ -47,7 +47,7 @@
         class="form__buttonSubmit"
         :class="{'form__buttonSubmit--disabled': !isDisabled}"
         :disabled="!isDisabled" @click="onRegister">
-        Register
+        登録内容を確認する
       </button>
     </div>
   </div>

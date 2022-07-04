@@ -1,40 +1,40 @@
 <template>
   <div class="form">
-    <h1 class="form__title">Confirm Register</h1>
+    <h1 class="form__title">登録した情報確認</h1>
     <div class="form__row">
-      <span class="form__label">Full name<i class="form__require">*</i></span>
+      <span class="form__label">お名前<i class="form__require">*</i></span>
       <div class="form__detail">
         <div class="form__col-2 form__firstname">
-          <span class="form__text">First name</span>
+          <span class="form__text">姓</span>
           <span class="form__text">{{ firstName }}</span>
         </div>
         <div class="form__col-2">
-          <span class="form__text">Last name</span>
+          <span class="form__text">名</span>
           <span class="form__text">{{ lastName }}</span>
         </div>
       </div>
     </div>
     <div class="form__row">
-      <span class="form__label">Company name<i class="form__require">*</i></span>
+      <span class="form__label">勤務先・所属団体<i class="form__require">*</i></span>
       <div class="form__detail">
         <span class="form__text">{{ companyName }}</span>
       </div>
     </div>
     <div class="form__row">
-      <span class="form__label">Email<i class="form__require">*</i></span>
+      <span class="form__label">メールアドレス<i class="form__require">*</i></span>
       <div class="form__detail">
         <span class="form__text">{{ email }}</span>
       </div>
     </div>
     <div class="form__row">
-      <span class="form__label">Terms & Conditions<i class="form__require">*</i></span>
+      <span class="form__label">利用規約の同意<i class="form__require">*</i></span>
       <div class="form__detail">
-        <span class="form__text">Accept</span>
+        <span class="form__text">同意する</span>
       </div>
     </div>
     <div class="form__button">
-      <button class="form__buttonSubmit" @click="onEditRegister">Edit</button>
-      <button class="form__buttonSubmit" @click="onConfirmRegister">Confirm</button>
+      <button class="form__buttonSubmit" @click="onEditRegister">修正する</button>
+      <button class="form__buttonSubmit" @click="onConfirmRegister">登録する</button>
     </div>
   </div>
 </template>

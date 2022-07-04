@@ -49,6 +49,7 @@ jobs:
       - name: Webhook
         uses: diverta/workflow-webhook@v2
         env:
+          BASE_URL: ${{ secrets.BASE_URL }}
           webhook_url: "https://dev-bita.g.kuroco.app/direct/menu/github/"
           webhook_secret: "c66e193b2f4c8daae457dc4ddb390716"
           data: '{"single_zip":"0","domain":"dev-bita.g.kuroco-front.app","pr":"${{ github.event.issue.pull_request.url }}",  "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ steps.get_branch.outputs.sha }}"}'
@@ -82,6 +83,7 @@ jobs:
       - name: Webhook
         uses: diverta/workflow-webhook@v2
         env:
+          BASE_URL: ${{ secrets.BASE_URL }}
           webhook_url: "https://dev-bita.g.kuroco.app/direct/menu/github/"
           webhook_secret: "c66e193b2f4c8daae457dc4ddb390716"
           data: '{"single_zip":"0","domain":"dev-bita.g.kuroco-front.app", "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ github.sha }}"}'
