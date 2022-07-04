@@ -36,6 +36,8 @@ export default Vue.extend({
   mounted() {
     console.log('BASE_URL: ',process.env.BASE_URL)
     console.log('NUXT_ENV_BASE_URL: ',process.env.NUXT_ENV_BASE_URL)
+    console.log('API_SECRET: ',process.env.API_SECRET)
+    console.log('NUXT_ENV_API_SECRET: ',process.env.NUXT_ENV_API_SECRET)
     this.isShow = this.$store.getters.getAuthenticated
     this.$axios.$get(process.env.BASE_URL + '/rcms-api/11/blog')
       .then(response => {
