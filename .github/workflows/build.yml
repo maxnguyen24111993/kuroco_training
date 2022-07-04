@@ -10,6 +10,8 @@ on:
 env:
   NUXT_ENV_BASE_URL: ${{ secrets.NUXT_ENV_BASE_URL }}
   BASE_URL: ${{ secrets.BASE_URL }}
+  API_SECRET: ${{ secrets.NUXT_ENV_BASE_URL }}
+  NUXT_ENV_API_SECRET: ${{ secrets.BASE_URL }}
 jobs:
   # for Pull Request (exclude merged)
   pullreq_build:
