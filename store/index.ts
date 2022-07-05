@@ -2,7 +2,8 @@ import { GetterTree, ActionTree, MutationTree } from 'vuex'
 
 export const state = () => ({
   isHiddenInput: false,
-  objRegister: null
+  objRegister: null,
+  baseURL: ''
 })
 
 export type RootState = ReturnType<typeof state>
@@ -18,7 +19,8 @@ export const getters: GetterTree<RootState, RootState> = {
   getAuthenticated: () => {
     if (process.client) return JSON.parse(localStorage.getItem('AUTHENTICATED') || 'false')
   },
-  getProfileRegister: state => state.objRegister
+  getProfileRegister: state => state.objRegister,
+  getBaseURL: state => state.baseURL
 }
 
 export const mutations: MutationTree<RootState> = {
@@ -26,19 +28,23 @@ export const mutations: MutationTree<RootState> = {
   setMemberId: (state, memberId) => localStorage.setItem('MEMBER_ID', memberId),
   setAuthenticated: (state, authenticated) => localStorage.setItem('AUTHENTICATED', authenticated),
   setIsHiddenInput: (state, isHidden ) => state.isHiddenInput = !isHidden,
-  setProfileRegister: (state, objRegister) => state.objRegister = objRegister
+  setProfileRegister: (state, objRegister) => state.objRegister = objRegister,
+  setBaseURL: (state, baseURL) => state.baseURL = baseURL
 }
 
 export const actions: ActionTree<RootState, RootState> = {
+  async nuxtServerInit({ commit }, $config) {
+    await commit('setBaseURL', $config.app.$config.baseURL)
+  },
   async login ({ commit }, payload) {
-    await this.$axios.$post(process.env.BASE_URL + '/rcms-api/10/login', payload)
+    await this.$axios.$post(this.getters.getBaseURL + '/rcms-api/10/login', payload)
       .then(response => {
         const { grant_token, member_id } = response
         commit('setMemberId', member_id)
         commit('setAuthenticated', true)
         return Promise.resolve(grant_token)
       }).then(grant_token => {
-        this.$axios.$post(process.env.BASE_URL + '/rcms-api/10/token', {
+        this.$axios.$post(this.getters.getBaseURL + '/rcms-api/10/token', {
           grant_token: grant_token
         }).then(response => {
           commit('setToken', response.access_token.value)
@@ -49,7 +55,7 @@ export const actions: ActionTree<RootState, RootState> = {
       })
   },
   async logout () {
-    await this.$axios.$post(process.env.BASE_URL + '/rcms-api/10/logout', null, {
+    await this.$axios.$post(this.getters.getBaseURL + '/rcms-api/10/logout', null, {
       headers: { 'x-rcms-api-access-token': this.getters.getToken }
     }).then(response => {
       console.log(response)
@@ -62,7 +68,7 @@ export const actions: ActionTree<RootState, RootState> = {
     })
   },
   async register ({ commit }, payload) {
-    await this.$axios.post(process.env.BASE_URL + '/rcms-api/7/member/register', payload)
+    await this.$axios.post(this.getters.getBaseURL + '/rcms-api/7/member/register', payload)
       .then(response => {
         console.log(response)
         this.$router.push('/auth/register_thanks')
@@ -71,7 +77,7 @@ export const actions: ActionTree<RootState, RootState> = {
       })
   },
   async updateMember ({ commit }, payload) {
-    await this.$axios.$post(process.env.BASE_URL + `/rcms-api/10/member/update/${this.getters.getMemberId}`, payload, {
+    await this.$axios.$post(this.getters.getBaseURL + `/rcms-api/10/member/update/${this.getters.getMemberId}`, payload, {
       headers: { 'x-rcms-api-access-token': this.getters.getToken }
     }).then(response => {
       console.log(response)
@@ -81,7 +87,7 @@ export const actions: ActionTree<RootState, RootState> = {
     })
   },
   async deleteMember () {
-    await this.$axios.$post(process.env.BASE_URL + `/rcms-api/10/member/delete/${this.getters.getMemberId}`, null, {
+    await this.$axios.$post(this.getters.getBaseURL + `/rcms-api/10/member/delete/${this.getters.getMemberId}`, null, {
       headers: { 'x-rcms-api-access-token': this.getters.getToken, 'Content-Type': 'application/json' }
     }).then(response => {
       console.log(response)
