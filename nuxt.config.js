@@ -59,6 +59,10 @@ export default {
     },
   },
 
+  publicRuntimeConfig: {
+    apiSecret: process.env.NUXT_ENV_API_SECRET
+  },
+
   env: {
     BASE_URL: process.env.NUXT_ENV_BASE_URL || 'http://localhost:3000'
   }
