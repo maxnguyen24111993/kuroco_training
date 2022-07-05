@@ -24,6 +24,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { API_SERVICES } from "~/constants";
 
 export default Vue.extend({
   name: 'HomePage',
@@ -34,13 +35,16 @@ export default Vue.extend({
     }
   },
   mounted() {
+    this.$nextTick(() => this.$nuxt.$loading.start())
     this.isShow = this.$store.getters.getAuthenticated
-    this.$axios.$get(this.$config.baseURL + '/rcms-api/11/blog')
+    this.$axios.$get(this.$config.baseURL + API_SERVICES.LISTS_BLOG)
       .then(response => {
         console.log(response)
         this.response = response.list
+        this.$nuxt.$loading.finish()
       }).catch(e => {
         console.log(e.response)
+        this.$nuxt.$loading.finish()
       })
   }
 })
