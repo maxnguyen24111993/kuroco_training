@@ -35,11 +35,14 @@ export default Vue.extend({
   },
   methods: {
     async onLogin () {
+      this.$nextTick(() => this.$nuxt.$loading.start())
       const payload = {
         email: this.email,
         password: this.password
       }
       await this.$store.dispatch('login', payload)
+        .then(() => this.$nuxt.$loading.finish())
+        .catch(() => this.$nuxt.$loading.finish())
     }
   }
 })

@@ -58,6 +58,7 @@ export default Vue.extend({
       this.$router.back()
     },
     async onConfirmRegister () {
+      this.$nextTick(() => this.$nuxt.$loading.start())
       const payload = {
         name1: this.firstName,
         name2: this.lastName,
@@ -65,8 +66,9 @@ export default Vue.extend({
         company_name: this.companyName,
         login_pwd: this.password
       }
-      console.log(payload)
       await this.$store.dispatch('register', payload)
+        .then(() => this.$nuxt.$loading.finish())
+        .catch(() => this.$nuxt.$loading.finish())
     }
   },
   mounted() {

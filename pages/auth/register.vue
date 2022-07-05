@@ -55,6 +55,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { ROUTES } from "~/constants";
 
 export default Vue.extend({
   name: 'RegisterPage',
@@ -77,7 +78,7 @@ export default Vue.extend({
         isDisabled: this.isDisabled
       }
       await this.$store.commit('setProfileRegister', payload)
-      await this.$router.push('/auth/register_confirm')
+      await this.$router.push(ROUTES.AUTH_REGISTER_CONFIRM)
     }
   },
   mounted() {
